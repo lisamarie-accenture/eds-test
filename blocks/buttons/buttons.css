@@ -1,0 +1,89 @@
+/*
+ * Buttons Block — BCBSIL EDS
+ * Care Compass pill, white-pill on dark, outline, icon-left, dual CTA.
+ * Signature shape: 64px pill radius (--radius-pill)
+ * Button font-weight: SemiBold (600) per brand-profile.json
+ * Case: sentence case — never UPPERCASE
+ */
+
+/* Primary CTA (Care Compass fill on light) */
+.buttons a.button:any-link,
+.buttons .button-container a {
+  font-family: var(--font-family-body);
+  font-weight: var(--button-font-weight);
+  font-size: var(--button-font-size);
+  display: inline-block;
+  padding: var(--button-padding);
+  border-radius: var(--button-border-radius);
+  text-align: center;
+  text-decoration: none;
+  line-height: 1.5;
+  cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+  background-color: var(--color-primary);
+  border: 1px solid var(--color-primary);
+  color: var(--color-text-inverse);
+  text-transform: none; /* sentence case */
+}
+
+.buttons a.button:any-link:hover,
+.buttons .button-container a:hover {
+  background-color: var(--color-primary-hover);
+  border-color: var(--color-primary-hover);
+  color: var(--color-text-inverse);
+}
+
+.buttons a.button:any-link:active,
+.buttons .button-container a:active {
+  background-color: var(--color-primary-active);
+  border-color: var(--color-primary-active);
+}
+
+.buttons a.button:any-link:focus-visible,
+.buttons .button-container a:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Secondary (outline on light) */
+.buttons a.button.secondary:any-link,
+.buttons .button-container.secondary a {
+  background-color: transparent;
+  border: 1px solid var(--color-primary);
+  color: var(--color-primary);
+}
+
+.buttons a.button.secondary:any-link:hover,
+.buttons .button-container.secondary a:hover {
+  background-color: #d9ecf6;
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+.buttons a.button.secondary:any-link:active,
+.buttons .button-container.secondary a:active {
+  background-color: #b5d9ec;
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+/* Dual CTA layout */
+.buttons .button-container {
+  display: inline-block;
+  margin: 0 var(--space-xs) var(--space-xs) 0;
+}
+
+/* Dark section — white pill with Care Compass text */
+.section.dark .buttons a.button:any-link,
+.section.dark .buttons .button-container a {
+  background-color: var(--color-text-inverse);
+  border-color: var(--color-text-inverse);
+  color: var(--color-primary);
+}
+
+.section.dark .buttons a.button:any-link:hover,
+.section.dark .buttons .button-container a:hover {
+  background-color: #d9ecf6;
+  border-color: #d9ecf6;
+  color: var(--color-primary);
+}
