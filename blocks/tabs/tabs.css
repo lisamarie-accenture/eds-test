@@ -1,0 +1,137 @@
+/*
+ * Tabs Block — BCBSIL EDS
+ * Underline, pill, vertical variant, with badges.
+ * Motif: "Audience tab strip" — pale-blue strip with active state.
+ */
+
+.tabs {
+  max-width: var(--content-max-width);
+  margin: 0 auto var(--space-l);
+}
+
+/* Tab list */
+.tabs .tabs-list {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-bottom: 2px solid var(--color-border);
+  gap: 0;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.tabs .tabs-list button,
+.tabs .tabs-list a {
+  font-family: var(--font-family-body);
+  font-weight: var(--font-weight-semibold);
+  font-size: 1rem;
+  color: var(--color-text);
+  background: none;
+  border: none;
+  padding: var(--space-s) var(--space-m);
+  cursor: pointer;
+  white-space: nowrap;
+  position: relative;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+/* Underline indicator */
+.tabs .tabs-list button::after,
+.tabs .tabs-list a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background-color: transparent;
+  transition: background-color 0.2s;
+}
+
+.tabs .tabs-list button[aria-selected="true"]::after,
+.tabs .tabs-list button.active::after,
+.tabs .tabs-list a.active::after {
+  background-color: var(--color-primary);
+}
+
+.tabs .tabs-list button[aria-selected="true"],
+.tabs .tabs-list button.active,
+.tabs .tabs-list a.active {
+  color: var(--color-primary);
+}
+
+.tabs .tabs-list button:hover,
+.tabs .tabs-list a:hover {
+  color: var(--color-primary);
+}
+
+/* Tab panel content */
+.tabs .tabs-panel {
+  padding: var(--space-m) 0;
+}
+
+/* Pill variant */
+.tabs.pill .tabs-list {
+  border-bottom: none;
+  gap: var(--space-xs);
+  background-color: var(--color-cold-compress);
+  padding: var(--space-xs);
+  border-radius: var(--radius-pill);
+  display: inline-flex;
+}
+
+.tabs.pill .tabs-list button,
+.tabs.pill .tabs-list a {
+  border-radius: var(--radius-pill);
+  padding: var(--space-xs) var(--space-m);
+}
+
+.tabs.pill .tabs-list button::after,
+.tabs.pill .tabs-list a::after {
+  display: none;
+}
+
+.tabs.pill .tabs-list button[aria-selected="true"],
+.tabs.pill .tabs-list button.active,
+.tabs.pill .tabs-list a.active {
+  background-color: var(--color-primary);
+  color: var(--color-text-inverse);
+}
+
+/* Badge inside tab */
+.tabs .tabs-list .badge {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: var(--font-weight-bold);
+  background-color: var(--color-open-door);
+  color: var(--color-deep-navy);
+  border-radius: var(--radius-pill);
+  padding: 2px 8px;
+  margin-left: var(--space-xs);
+  vertical-align: middle;
+}
+
+/* Vertical variant */
+.tabs.vertical {
+  display: flex;
+  gap: var(--space-l);
+}
+
+.tabs.vertical .tabs-list {
+  flex-direction: column;
+  border-bottom: none;
+  border-right: 2px solid var(--color-border);
+  min-width: 200px;
+}
+
+.tabs.vertical .tabs-list button::after,
+.tabs.vertical .tabs-list a::after {
+  bottom: auto;
+  left: auto;
+  right: -2px;
+  top: 0;
+  width: 3px;
+  height: 100%;
+}
