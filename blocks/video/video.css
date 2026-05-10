@@ -1,0 +1,106 @@
+/*
+ * Video Block — BCBSIL EDS
+ * Poster + play overlay, side-by-side, with caption.
+ */
+
+.video {
+  max-width: var(--content-max-width);
+  margin: 0 auto var(--space-l);
+}
+
+/* Video container — 16:9 aspect */
+.video .video-container {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 */
+  height: 0;
+  overflow: hidden;
+  border-radius: var(--radius-card);
+  background-color: var(--color-black);
+}
+
+.video .video-container iframe,
+.video .video-container video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* Poster / play overlay */
+.video .video-poster {
+  position: relative;
+  cursor: pointer;
+  border-radius: var(--radius-card);
+  overflow: hidden;
+}
+
+.video .video-poster img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.video .video-poster .play-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 64px;
+  height: 64px;
+  background-color: rgba(0, 71, 110, 0.85); /* Deep Navy with transparency */
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s;
+}
+
+.video .video-poster:hover .play-button {
+  background-color: var(--color-primary);
+}
+
+.video .video-poster .play-button::after {
+  content: '';
+  display: block;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 10px 0 10px 18px;
+  border-color: transparent transparent transparent var(--color-text-inverse);
+  margin-left: 4px;
+}
+
+/* Caption */
+.video .video-caption,
+.video figcaption {
+  font-size: 0.875rem;
+  color: var(--color-subdued);
+  margin-top: var(--space-xs);
+}
+
+/* Side-by-side variant */
+.video.side-by-side > div {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-l);
+}
+
+@media (min-width: 768px) {
+  .video.side-by-side > div {
+    flex-direction: row;
+  }
+
+  .video.side-by-side .video-container,
+  .video.side-by-side .video-poster {
+    flex: 1;
+  }
+
+  .video.side-by-side .video-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+}
