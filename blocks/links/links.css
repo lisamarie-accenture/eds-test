@@ -1,0 +1,57 @@
+/*
+ * Links Block — BCBSIL EDS
+ * Plain, arrow, external (↗), dark variant.
+ */
+
+.links {
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+}
+
+.links a {
+  color: var(--color-link);
+  text-decoration: none;
+  font-weight: var(--font-weight-semibold);
+  transition: color 0.2s;
+}
+
+.links a:hover {
+  color: var(--color-link-hover);
+  text-decoration: underline;
+  text-decoration-thickness: from-font;
+}
+
+/* Arrow link — tertiary CTA style per brand-profile */
+.links a.arrow::after,
+.links .link-arrow a::after {
+  content: ' →';
+  display: inline;
+}
+
+/* External link indicator */
+.links a.external::after,
+.links .link-external a::after {
+  content: ' ↗';
+  display: inline;
+  font-size: 0.85em;
+}
+
+/* Link list */
+.links ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.links ul li {
+  margin-bottom: var(--space-xs);
+}
+
+/* Dark section override */
+.section.dark .links a {
+  color: var(--color-link-inverse);
+}
+
+.section.dark .links a:hover {
+  color: var(--color-link-inverse-hover);
+}
