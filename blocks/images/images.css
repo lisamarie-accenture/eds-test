@@ -1,0 +1,50 @@
+/*
+ * Images Block — BCBSIL EDS
+ * Single+caption, gallery, side-by-side, 16:9.
+ */
+
+.images {
+  max-width: var(--content-max-width);
+  margin: 0 auto var(--space-l);
+}
+
+.images img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: var(--radius-card);
+}
+
+/* Caption */
+.images figcaption,
+.images .caption {
+  font-size: 0.875rem;
+  color: var(--color-subdued);
+  margin-top: var(--space-xs);
+  font-style: italic;
+}
+
+/* Gallery — side-by-side */
+.images.gallery > div {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-s);
+}
+
+@media (min-width: 768px) {
+  .images.gallery > div {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* 16:9 aspect enforcement */
+.images.ratio-16-9 img {
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+/* 4:3 aspect (editorial cards) */
+.images.ratio-4-3 img {
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
