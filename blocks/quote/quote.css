@@ -1,0 +1,89 @@
+/*
+ * Quote Block — BCBSIL EDS
+ * Default, testimonial with avatar, featured dark variant.
+ */
+
+.quote {
+  max-width: var(--content-max-width);
+  margin: 0 auto var(--space-l);
+}
+
+.quote blockquote,
+.quote > div {
+  border-left: 4px solid var(--color-primary);
+  padding: var(--space-m) var(--space-l);
+  margin: 0;
+}
+
+.quote blockquote p,
+.quote > div > p {
+  font-family: var(--font-family-body);
+  font-size: 1.25rem;
+  font-style: italic;
+  font-weight: var(--font-weight-regular);
+  color: var(--color-text);
+  line-height: 1.6;
+  margin: 0 0 var(--space-s);
+}
+
+/* Attribution */
+.quote cite,
+.quote .attribution {
+  display: block;
+  font-style: normal;
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-deep-navy);
+  font-size: 0.875rem;
+}
+
+/* Testimonial with avatar */
+.quote.testimonial > div {
+  display: flex;
+  gap: var(--space-m);
+  align-items: flex-start;
+  border-left: none;
+  padding: var(--space-l);
+  background-color: var(--color-cold-compress);
+  border-radius: var(--radius-card);
+}
+
+.quote.testimonial .avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+/* Featured (dark background) */
+.quote.featured > div {
+  background-color: var(--color-deep-navy);
+  border-left: 4px solid var(--color-primary);
+  border-radius: var(--radius-card);
+  padding: var(--space-xl);
+}
+
+.quote.featured blockquote p,
+.quote.featured > div > p {
+  color: var(--color-text-inverse);
+  font-size: 1.5rem;
+}
+
+.quote.featured cite,
+.quote.featured .attribution {
+  color: #d9ecf6;
+}
+
+/* Dark section override */
+.section.dark .quote blockquote,
+.section.dark .quote > div {
+  border-color: var(--color-primary);
+}
+
+.section.dark .quote blockquote p {
+  color: var(--color-text-inverse);
+}
+
+.section.dark .quote cite {
+  color: #d9ecf6;
+}
