@@ -1,1 +1,186 @@
-/* add global styles that can be loaded post LCP here */
+/*
+ * Demo EDS — lazy-styles.css
+ * Below-fold and non-critical styles loaded after first paint.
+ * Place in: styles/lazy-styles.css
+ *
+ * Includes: section themes, footer, status colors, accessibility utilities
+ */
+
+/* ============================================================================
+   SECTION THEMES  (add class via EDS section metadata)
+   ============================================================================ */
+
+/* Dark blue section — use "dark" in section metadata Style field */
+.section.dark {
+  background-color: var(--color-dark);
+  color: var(--color-text-inverse);
+}
+
+.section.dark h1,
+.section.dark h2,
+.section.dark h3,
+.section.dark h4,
+.section.dark h5,
+.section.dark h6,
+.section.dark p {
+  color: var(--color-text-inverse);
+}
+
+.section.dark a {
+  color: var(--color-link-inverse);
+  text-decoration: underline;
+}
+
+.section.dark a:hover {
+  color: var(--color-link-inverse-hover);
+}
+
+.section.dark a.button:any-link {
+  background-color: var(--color-text-inverse);
+  border-color: var(--color-text-inverse);
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+.section.dark a.button:any-link:hover {
+  background-color: var(--color-light-blue);
+  border-color: var(--color-light-blue);
+  color: var(--color-primary);
+}
+
+/* Light blue section — use "light-blue" in section metadata Style field */
+.section.light-blue {
+  background-color: var(--color-light-blue-bg);
+}
+
+/* Grey section — use "grey" in section metadata Style field */
+.section.grey {
+  background-color: var(--color-grey-bg);
+}
+
+/* ============================================================================
+   FOOTER (EDS footer block)
+   ============================================================================ */
+
+footer {
+  background-color: var(--color-header-bg);
+  color: var(--color-text-inverse);
+}
+
+footer a {
+  color: var(--color-text-inverse);
+  text-decoration: none;
+}
+
+footer a:hover,
+footer a:focus-visible {
+  text-decoration: underline;
+  text-decoration-thickness: from-font;
+}
+
+footer .footer > div {
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+/* Footer nav columns — desktop */
+@media (min-width: 768px) {
+  footer .footer-nav {
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    width: 100%;
+  }
+
+  footer .footer-nav-column {
+    flex: 1 1 auto;
+  }
+}
+
+footer .footer-nav-title {
+  border-bottom: 1px solid var(--color-text-inverse);
+  padding-bottom: 20px;
+}
+
+footer .footer-secondary-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+footer .footer-disclaimer a {
+  text-decoration: underline;
+}
+
+/* ============================================================================
+   STATUS / ALERT UTILITIES
+   ============================================================================ */
+
+.error {
+  color: var(--color-error);
+}
+
+.alert-success {
+  background-color: var(--color-success-bg);
+}
+
+.alert-warning {
+  background-color: var(--color-warning-bg);
+}
+
+.alert-error {
+  background-color: var(--color-error-bg);
+}
+
+/* ============================================================================
+   ACCESSIBILITY
+   ============================================================================ */
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Skip nav link */
+a.skip-nav {
+  font-family: var(--font-family-body);
+  font-weight: var(--font-weight-semibold);
+  position: absolute;
+  left: 8px;
+  top: 8px;
+  max-width: 250px;
+  z-index: 1000;
+  padding: 0.5rem 1rem;
+  background: var(--color-primary);
+  color: var(--color-text-inverse);
+  border-radius: var(--button-border-radius);
+  text-decoration: none;
+  transform: translateY(-200%);
+  transition: transform 0.2s;
+}
+
+a.skip-nav:focus {
+  transform: translateY(0);
+}
+
+/* ============================================================================
+   SMOOTH SCROLL (non-critical enhancement)
+   ============================================================================ */
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
