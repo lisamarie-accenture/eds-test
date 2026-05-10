@@ -1,325 +1,498 @@
 /*
- * Copyright 2020 Adobe. All rights reserved.
- * This file is licensed to you under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License. You may obtain a copy
- * of the License at http://www.apache.org/licenses/LICENSE-2.0
+ * Demo Test EDS Styles
+ * Translated from AEM Classic clientlibs → EDS-compatible CSS
+ * Source: clientlib-all.min.css (bcbs-v2)
  *
- * Unless required by applicable law or agreed to in writing, software distributed under
- * the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR REPRESENTATIONS
- * OF ANY KIND, either express or implied. See the License for the specific language
- * governing permissions and limitations under the License.
+ * How to use:
+ *   1. Copy this file to your EDS repo: styles/styles.css
+ *   2. Add the Google Fonts import or self-host Open Sans
+ *   3. Block-specific overrides go in blocks/<name>/<name>.css
  */
 
+/* ============================================================================
+   FONTS
+   ============================================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400;1,700&display=swap');
+
+/* ============================================================================
+   BRAND TOKENS  (:root custom properties)
+   Maps to your brand-profile.json naming conventions
+   ============================================================================ */
+
 :root {
-  /* colors */
-  --background-color: white;
-  --light-color: #f8f8f8;
-  --dark-color: #505050;
-  --text-color: #131313;
-  --link-color: #3b63fb;
-  --link-hover-color: #1d3ecf;
+  /* ── Color Palette ─────────────────────────────────────────────────────── */
 
-  /* fonts */
-  --body-font-family: roboto, roboto-fallback, sans-serif;
-  --heading-font-family: roboto-condensed, roboto-condensed-fallback, sans-serif;
+  /* Primary / CTA Blue — "Care Compass" */
+  --color-primary:            #007cbf;
+  --color-primary-hover:      #006aa4;
+  --color-primary-active:     #005989;
+  --color-primary-disabled:   #afafaf;
 
-  /* body sizes */
-  --body-font-size-m: 22px;
-  --body-font-size-s: 19px;
-  --body-font-size-xs: 17px;
+  /* Dark Navy — "Network" / header & dark sections */
+  --color-dark:               #00476e;
+  --color-header-bg:          #0a0a0a;
 
-  /* heading sizes */
-  --heading-font-size-xxl: 55px;
-  --heading-font-size-xl: 44px;
-  --heading-font-size-l: 34px;
-  --heading-font-size-m: 27px;
-  --heading-font-size-s: 24px;
-  --heading-font-size-xs: 22px;
+  /* Light Blue — "Open Door" / light section backgrounds */
+  --color-light-blue-bg:      #f4f9fc;
+  --color-light-blue:         #d9ecf6;
+  --color-light-blue-mid:     #b5d9ec;
+  --color-info-bg:            #ecf5fb;
 
-  /* nav height */
-  --nav-height: 64px;
+  /* Neutrals */
+  --color-text:               #464645;
+  --color-text-inverse:       #ffffff;
+  --color-background:         #ffffff;
+  --color-grey-bg:            #f8f8f8;
+  --color-border:             #e4e4e3;
+  --color-border-light:       #dcdede;
+  --color-grey-mid:           #afafaf;
+  --color-grey-dark:          #888888;
+  --color-black:              #0a0a0a;
+
+  /* Links */
+  --color-link:               #005587;
+  --color-link-hover:         #004974;
+  --color-link-inverse:       #ffffff;
+  --color-link-inverse-hover: #d9ecf6;
+
+  /* Status */
+  --color-error:              #e10000;
+  --color-error-dark:         #c10000;
+  --color-success-bg:         #e9f4ed;
+  --color-warning-bg:         #fff6e5;
+  --color-error-bg:           #fff2f2;
+
+  /* ── Typography ────────────────────────────────────────────────────────── */
+
+  --font-family-body:         'Open Sans', 'Segoe UI', Tahoma, sans-serif;
+  --font-weight-light:        300;
+  --font-weight-regular:      400;
+  --font-weight-semibold:     600;
+  --font-weight-bold:         700;
+
+  /* Body */
+  --body-font-size:           1rem;       /* 16px */
+  --body-line-height:         1.5;
+
+  /* Heading scale — mobile-first, desktop overrides below */
+  --heading-color:            #464645;
+
+  --h1-font-size:             2.5rem;     /* 40px */
+  --h1-line-height:           2.75rem;
+  --h1-font-weight:           700;
+
+  --h2-font-size:             1.625rem;   /* 26px */
+  --h2-line-height:           1.538;
+  --h2-font-weight:           400;
+
+  --h3-font-size:             1.375rem;   /* 22px */
+  --h3-line-height:           1.455;
+  --h3-font-weight:           400;
+
+  --h4-font-size:             1.25rem;    /* 20px */
+  --h4-line-height:           1.813rem;
+  --h4-font-weight:           400;
+
+  --h5-font-size:             1.125rem;   /* 18px */
+  --h5-font-weight:           400;
+
+  --h6-font-size:             1rem;       /* 16px */
+  --h6-font-weight:           700;
+
+  /* ── Spacing & Layout ──────────────────────────────────────────────────── */
+
+  --nav-height:               64px;
+  --content-max-width:        1272px;
+  --section-padding:          40px 0;
+  --section-padding-mobile:   20px 0;
+
+  /* ── Buttons ───────────────────────────────────────────────────────────── */
+
+  --button-border-radius:     4rem;       /* pill shape */
+  --button-padding:           0.5rem 1rem;
+  --button-font-weight:       400;
 }
 
-/* fallback fonts */
-@font-face {
-  font-family: roboto-condensed-fallback;
-  size-adjust: 88.82%;
-  src: local('Arial');
-}
+/* ============================================================================
+   RESET / BASE
+   ============================================================================ */
 
-@font-face {
-  font-family: roboto-fallback;
-  size-adjust: 99.529%;
-  src: local('Arial');
-}
-
-@media (width >= 900px) {
-  :root {
-    /* body sizes */
-    --body-font-size-m: 18px;
-    --body-font-size-s: 16px;
-    --body-font-size-xs: 14px;
-
-    /* heading sizes */
-    --heading-font-size-xxl: 45px;
-    --heading-font-size-xl: 36px;
-    --heading-font-size-l: 28px;
-    --heading-font-size-m: 22px;
-    --heading-font-size-s: 20px;
-    --heading-font-size-xs: 18px;
-  }
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
 body {
-  display: none;
   margin: 0;
-  background-color: var(--background-color);
-  color: var(--text-color);
-  font-family: var(--body-font-family);
-  font-size: var(--body-font-size-m);
-  line-height: 1.6;
+  font-family: var(--font-family-body);
+  font-size: var(--body-font-size);
+  line-height: var(--body-line-height);
+  color: var(--color-text);
+  background-color: var(--color-background);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
-body.appear {
-  display: block;
-}
+/* ============================================================================
+   TYPOGRAPHY
+   ============================================================================ */
 
-header {
-  height: var(--nav-height);
-}
-
-header .header,
-footer .footer {
-  visibility: hidden;
-}
-
-header .header[data-block-status="loaded"],
-footer .footer[data-block-status="loaded"] {
-  visibility: visible;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  margin-top: 0.8em;
-  margin-bottom: 0.25em;
-  font-family: var(--heading-font-family);
-  font-weight: 600;
-  line-height: 1.25;
-  scroll-margin: 40px;
-}
-
-h1 { font-size: var(--heading-font-size-xxl); }
-h2 { font-size: var(--heading-font-size-xl); }
-h3 { font-size: var(--heading-font-size-l); }
-h4 { font-size: var(--heading-font-size-m); }
-h5 { font-size: var(--heading-font-size-s); }
-h6 { font-size: var(--heading-font-size-xs); }
-
-p,
-dl,
-ol,
-ul,
-pre,
-blockquote {
-  margin-top: 0.8em;
-  margin-bottom: 0.25em;
-}
-
-code,
-pre {
-  font-size: var(--body-font-size-s);
-}
-
-pre {
-  padding: 16px;
-  border-radius: 8px;
-  background-color: var(--light-color);
-  overflow-x: auto;
-  white-space: pre;
-}
-
-main > div {
-  margin: 40px 16px;
-}
-
-input,
-textarea,
-select,
-button {
-  font: inherit;
-}
-
-/* links */
-a:any-link {
-  color: var(--link-color);
-  text-decoration: none;
-  overflow-wrap: break-word;
-}
-
-a:hover {
-  color: var(--link-hover-color);
-  text-decoration: underline;
-}
-
-/* buttons */
-p.button-wrapper {
-  margin: 12px 0;
-}
-
-a.button:any-link,
-button.button {
-  box-sizing: border-box;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  max-width: 100%;
-  margin: 0;
-  border: 2px solid transparent;
-  border-radius: 2.4em;
-  padding: 0.5em 1.2em;
-  font: inherit;
-  font-weight: 500;
-  line-height: 1.25;
-  text-decoration: none;
-  cursor: pointer;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-a.button[aria-disabled="true"],
-button.button:disabled {
-  cursor: not-allowed;
-  pointer-events: none;
-}
-
-a.button.primary,
-button.button.primary {
-  border-color: var(--text-color);
-  background-color: var(--text-color);
-  color: var(--background-color);
-}
-
-a.button.primary:hover,
-a.button.primary:focus-visible,
-button.button.primary:hover,
-button.button.primary:focus-visible {
-  border-color: var(--dark-color);
-  background-color: var(--dark-color);
-  color: var(--light-color);
-}
-
-a.button.primary[aria-disabled="true"],
-a.button.primary[aria-disabled="true"]:hover,
-a.button.primary[aria-disabled="true"]:focus-visible,
-button.button.primary:disabled,
-button.button.primary:disabled:hover,
-button.button.primary:disabled:focus-visible {
-  background-color: var(--light-color);
-  border-color: var(--light-color);
-  color: var(--dark-color);
-}
-
-a.button.secondary,
-button.button.secondary {
-  border-color: var(--text-color);
-  background-color: transparent;
-  color: var(--text-color);
-}
-
-a.button.secondary:hover,
-a.button.secondary:focus-visible,
-button.button.secondary:hover,
-button.button.secondary:focus-visible {
-  border-color: var(--dark-color);
-  background-color: var(--light-color);
-  color: var(--dark-color);
-}
-
-a.button.secondary[aria-disabled="true"],
-a.button.secondary[aria-disabled="true"]:hover,
-a.button.secondary[aria-disabled="true"]:focus-visible,
-button.button.secondary:disabled,
-button.button.secondary:disabled:hover,
-button.button.secondary:disabled:focus-visible {
-  background-color: var(--light-color);
-  border-color: var(--light-color);
-  color: var(--dark-color);
-}
-
-/* high-impact call-to-action */
-a.button.accent,
-button.button.accent {
-  border-color: var(--link-color);
-  background-color: var(--link-color);
-  color: var(--background-color);
-}
-
-a.button.accent:hover,
-a.button.accent:focus-visible,
-button.button.accent:hover,
-button.button.accent:focus-visible {
-  border-color: var(--link-hover-color);
-  background-color: var(--link-hover-color);
-}
-
-a.button.accent[aria-disabled="true"],
-a.button.accent[aria-disabled="true"]:hover,
-a.button.accent[aria-disabled="true"]:focus-visible,
-button.button.accent:disabled,
-button.button.accent:disabled:hover,
-button.button.accent:disabled:focus-visible {
-  background-color: var(--light-color);
-  border-color: var(--light-color);
-  color: var(--dark-color);
-}
-
-main img {
-  max-width: 100%;
-  width: auto;
-  height: auto;
-}
-
-.icon {
-  display: inline-block;
-  height: 24px;
-  width: 24px;
-}
-
-.icon img {
-  height: 100%;
-  width: 100%;
-}
-
-/* sections */
-main > .section {
-  margin: 40px 0;
-}
-
-main > .section > div {
-  max-width: 1200px;
-  margin: auto;
-  padding: 0 24px;
-}
-
-main > .section:first-of-type {
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-family-body);
+  font-style: normal;
+  color: var(--heading-color);
   margin-top: 0;
 }
 
-@media (width >= 900px) {
-  main > .section > div {
-    padding: 0 32px;
+h1 {
+  font-size: var(--h1-font-size);
+  line-height: var(--h1-line-height);
+  font-weight: var(--h1-font-weight);
+}
+
+h2 {
+  font-size: var(--h2-font-size);
+  line-height: var(--h2-line-height);
+  font-weight: var(--h2-font-weight);
+}
+
+h3 {
+  font-size: var(--h3-font-size);
+  line-height: var(--h3-line-height);
+  font-weight: var(--h3-font-weight);
+}
+
+h4 {
+  font-size: var(--h4-font-size);
+  line-height: var(--h4-line-height);
+  font-weight: var(--h4-font-weight);
+}
+
+h5 {
+  font-size: var(--h5-font-size);
+  font-weight: var(--h5-font-weight);
+}
+
+h6 {
+  font-size: var(--h6-font-size);
+  font-weight: var(--h6-font-weight);
+}
+
+/* Desktop heading scale */
+@media (min-width: 768px) {
+  h1 {
+    font-size: 2.625rem;
+    line-height: 2.875rem;
+  }
+
+  h2 {
+    font-size: 2.25rem;
+    line-height: 1.333;
+  }
+
+  h3 {
+    font-size: 1.625rem;
+    line-height: 1.538;
+  }
+
+  h4 {
+    font-size: 1.375rem;
+    line-height: 1.938rem;
   }
 }
 
-/* section metadata */
-main .section.light,
-main .section.highlight {
-  background-color: var(--light-color);
-  margin: 0;
-  padding: 40px 0;
+/* Paragraph / body text variants */
+.para-lrg {
+  font-size: 1.125rem;
+}
+
+strong, b {
+  font-family: var(--font-family-body);
+  font-weight: var(--font-weight-bold);
+}
+
+em, i {
+  font-family: var(--font-family-body);
+  font-style: italic;
+}
+
+sub { top: 0.4em; }
+sup { top: -0.4em; }
+
+sub, sup {
+  line-height: 1;
+  position: relative;
+  vertical-align: baseline;
+}
+
+/* ============================================================================
+   LINKS
+   ============================================================================ */
+
+a {
+  text-decoration: none;
+  color: var(--color-link);
+}
+
+a:visited {
+  color: var(--color-link);
+}
+
+a:hover {
+  color: var(--color-link-hover);
+  text-decoration: none;
+}
+
+a:hover,
+a:focus-visible {
+  text-decoration: none;
+}
+
+/* Links inside paragraphs get underline on hover */
+p > a:hover,
+p > a:focus-visible {
+  text-decoration: underline;
+  text-decoration-thickness: from-font;
+}
+
+/* ============================================================================
+   BUTTONS  (EDS: style <a> tags with .button class or within button blocks)
+   ============================================================================ */
+
+a.button:any-link,
+.button-container a {
+  font-family: var(--font-family-body);
+  font-weight: var(--button-font-weight);
+  font-style: normal;
+  display: inline-block;
+  padding: var(--button-padding);
+  border-radius: var(--button-border-radius);
+  text-align: center;
+  text-decoration: none;
+  line-height: 1.5;
+  cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+
+  /* Primary (default) */
+  background-color: var(--color-primary);
+  border: 1px solid var(--color-primary);
+  color: var(--color-text-inverse);
+}
+
+a.button:any-link:hover,
+.button-container a:hover {
+  background-color: var(--color-primary-hover);
+  border-color: var(--color-primary-hover);
+  color: var(--color-text-inverse);
+  text-decoration: none;
+}
+
+a.button:any-link:active,
+.button-container a:active {
+  background-color: var(--color-primary-active);
+  border-color: var(--color-primary-active);
+}
+
+a.button:any-link:focus-visible,
+.button-container a:focus-visible {
+  outline-offset: 2px;
+}
+
+/* Secondary button (outline) */
+a.button.secondary:any-link,
+.button-container.secondary a {
+  background-color: var(--color-background);
+  border: 1px solid var(--color-primary);
+  color: var(--color-primary);
+}
+
+a.button.secondary:any-link:hover,
+.button-container.secondary a:hover {
+  background-color: var(--color-light-blue);
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+a.button.secondary:any-link:active,
+.button-container.secondary a:active {
+  background-color: var(--color-light-blue-mid);
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+/* Disabled state */
+a.button[disabled],
+a.button.disabled {
+  background-color: var(--color-primary-disabled);
+  border-color: var(--color-primary-disabled);
+  color: var(--color-text-inverse);
+  cursor: not-allowed;
+}
+
+/* ============================================================================
+   LAYOUT — EDS Section Wrapper
+   ============================================================================ */
+
+main .section {
+  padding: var(--section-padding-mobile);
+}
+
+@media (min-width: 768px) {
+  main .section {
+    padding: var(--section-padding);
+  }
+}
+
+main .section > div {
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* ============================================================================
+   SECTION THEMES  (add class in EDS section metadata)
+   ============================================================================ */
+
+/* Dark blue section */
+.section.dark {
+  background-color: var(--color-dark);
+  color: var(--color-text-inverse);
+}
+
+.section.dark h1,
+.section.dark h2,
+.section.dark h3,
+.section.dark h4,
+.section.dark h5,
+.section.dark h6,
+.section.dark p {
+  color: var(--color-text-inverse);
+}
+
+.section.dark a {
+  color: var(--color-link-inverse);
+  text-decoration: underline;
+}
+
+.section.dark a:hover {
+  color: var(--color-link-inverse-hover);
+}
+
+.section.dark a.button:any-link {
+  background-color: var(--color-text-inverse);
+  border-color: var(--color-text-inverse);
+  color: var(--color-primary);
+}
+
+/* Light blue section */
+.section.light-blue {
+  background-color: var(--color-light-blue-bg);
+}
+
+/* Grey section */
+.section.grey {
+  background-color: var(--color-grey-bg);
+}
+
+/* ============================================================================
+   HEADER (EDS header block)
+   ============================================================================ */
+
+header {
+  background-color: var(--color-header-bg);
+}
+
+header nav {
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+header nav a {
+  color: var(--color-text-inverse);
+  text-decoration: none;
+}
+
+header nav a:hover {
+  text-decoration: underline;
+  text-decoration-thickness: from-font;
+}
+
+header .nav-brand img {
+  height: 40px;
+}
+
+/* ============================================================================
+   FOOTER (EDS footer block)
+   ============================================================================ */
+
+footer {
+  background-color: var(--color-header-bg);
+  color: var(--color-text-inverse);
+}
+
+footer a {
+  color: var(--color-text-inverse);
+}
+
+footer a:hover,
+footer a:focus-visible {
+  text-decoration: underline;
+  text-decoration-thickness: from-font;
+}
+
+footer .footer > div {
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+/* ============================================================================
+   UTILITY — Status / Error
+   ============================================================================ */
+
+.error {
+  color: var(--color-error);
+}
+
+/* ============================================================================
+   ACCESSIBILITY
+   ============================================================================ */
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Skip nav */
+a.skip-nav {
+  font-family: var(--font-family-body);
+  font-weight: var(--font-weight-semibold);
+  position: absolute;
+  left: 8px;
+  top: 8px;
+  max-width: 250px;
+  z-index: 1000;
+  padding: 0.5rem 1rem;
+  background: var(--color-primary);
+  color: var(--color-text-inverse);
+  transform: translateY(-200%);
+  transition: transform 0.2s;
+}
+
+a.skip-nav:focus {
+  transform: translateY(0);
 }
