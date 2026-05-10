@@ -1,33 +1,76 @@
+/*
+ * Columns Block — BCBSIL EDS
+ * 50/50, three-up audience tiles, asymmetric, image+text.
+ */
+
+.columns {
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+  padding: 0 var(--space-s);
+}
+
 .columns > div {
   display: flex;
   flex-direction: column;
+  gap: var(--space-l);
 }
 
+@media (min-width: 768px) {
+  .columns > div {
+    flex-direction: row;
+    gap: var(--space-xl);
+  }
+}
+
+/* Equal-width columns by default */
+.columns > div > div {
+  flex: 1;
+}
+
+/* Image handling inside columns */
 .columns img {
   width: 100%;
-}
-
-.columns > div > div {
-  order: 1;
-}
-
-.columns > div > .columns-img-col {
-  order: 0;
-}
-
-.columns > div > .columns-img-col img {
+  height: auto;
+  border-radius: var(--radius-card);
   display: block;
 }
 
-@media (width >= 900px) {
-  .columns > div {
-    align-items: center;
-    flex-direction: unset;
-    gap: 24px;
+/* Text content inside columns */
+.columns h2,
+.columns h3 {
+  color: var(--heading-color);
+  margin-top: 0;
+}
+
+.columns p {
+  color: var(--color-text);
+}
+
+/* Three-up audience tiles */
+.columns.three-up > div {
+  gap: var(--space-m);
+}
+
+@media (min-width: 768px) {
+  .columns.three-up > div > div {
+    flex: 1 1 33.33%;
+  }
+}
+
+/* Asymmetric 60/40 variant */
+@media (min-width: 768px) {
+  .columns.asymmetric > div > div:first-child {
+    flex: 3;
   }
 
-  .columns > div > div {
-    flex: 1;
-    order: unset;
+  .columns.asymmetric > div > div:last-child {
+    flex: 2;
   }
+}
+
+/* Dark section override */
+.section.dark .columns h2,
+.section.dark .columns h3,
+.section.dark .columns p {
+  color: var(--color-text-inverse);
 }
