@@ -1,19 +1,11 @@
 /*
- * Demo Test EDS Styles
- * Translated from AEM Classic clientlibs → EDS-compatible CSS
- * Source: clientlib-all.min.css (bcbs-v2)
+ * Demo EDS — styles.css
+ * Brand tokens, base styles, typography, buttons, layout.
+ * Critical-path CSS loaded before first paint.
+ * Place in: styles/styles.css
  *
- * How to use:
- *   1. Copy this file to your EDS repo: styles/styles.css
- *   2. Add the Google Fonts import or self-host Open Sans
- *   3. Block-specific overrides go in blocks/<name>/<name>.css
+ * Source: clientlib-all.min.css (v2)
  */
-
-/* ============================================================================
-   FONTS
-   ============================================================================ */
-
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400;1,700&display=swap');
 
 /* ============================================================================
    BRAND TOKENS  (:root custom properties)
@@ -72,32 +64,32 @@
   --font-weight-bold:         700;
 
   /* Body */
-  --body-font-size:           1rem;       /* 16px */
+  --body-font-size:           1rem;
   --body-line-height:         1.5;
 
   /* Heading scale — mobile-first, desktop overrides below */
   --heading-color:            #464645;
 
-  --h1-font-size:             2.5rem;     /* 40px */
+  --h1-font-size:             2.5rem;
   --h1-line-height:           2.75rem;
   --h1-font-weight:           700;
 
-  --h2-font-size:             1.625rem;   /* 26px */
+  --h2-font-size:             1.625rem;
   --h2-line-height:           1.538;
   --h2-font-weight:           400;
 
-  --h3-font-size:             1.375rem;   /* 22px */
+  --h3-font-size:             1.375rem;
   --h3-line-height:           1.455;
   --h3-font-weight:           400;
 
-  --h4-font-size:             1.25rem;    /* 20px */
+  --h4-font-size:             1.25rem;
   --h4-line-height:           1.813rem;
   --h4-font-weight:           400;
 
-  --h5-font-size:             1.125rem;   /* 18px */
+  --h5-font-size:             1.125rem;
   --h5-font-weight:           400;
 
-  --h6-font-size:             1rem;       /* 16px */
+  --h6-font-size:             1rem;
   --h6-font-weight:           700;
 
   /* ── Spacing & Layout ──────────────────────────────────────────────────── */
@@ -109,7 +101,7 @@
 
   /* ── Buttons ───────────────────────────────────────────────────────────── */
 
-  --button-border-radius:     4rem;       /* pill shape */
+  --button-border-radius:     4rem;
   --button-padding:           0.5rem 1rem;
   --button-font-weight:       400;
 }
@@ -353,51 +345,6 @@ main .section > div {
 }
 
 /* ============================================================================
-   SECTION THEMES  (add class in EDS section metadata)
-   ============================================================================ */
-
-/* Dark blue section */
-.section.dark {
-  background-color: var(--color-dark);
-  color: var(--color-text-inverse);
-}
-
-.section.dark h1,
-.section.dark h2,
-.section.dark h3,
-.section.dark h4,
-.section.dark h5,
-.section.dark h6,
-.section.dark p {
-  color: var(--color-text-inverse);
-}
-
-.section.dark a {
-  color: var(--color-link-inverse);
-  text-decoration: underline;
-}
-
-.section.dark a:hover {
-  color: var(--color-link-inverse-hover);
-}
-
-.section.dark a.button:any-link {
-  background-color: var(--color-text-inverse);
-  border-color: var(--color-text-inverse);
-  color: var(--color-primary);
-}
-
-/* Light blue section */
-.section.light-blue {
-  background-color: var(--color-light-blue-bg);
-}
-
-/* Grey section */
-.section.grey {
-  background-color: var(--color-grey-bg);
-}
-
-/* ============================================================================
    HEADER (EDS header block)
    ============================================================================ */
 
@@ -426,73 +373,4 @@ header nav a:hover {
 
 header .nav-brand img {
   height: 40px;
-}
-
-/* ============================================================================
-   FOOTER (EDS footer block)
-   ============================================================================ */
-
-footer {
-  background-color: var(--color-header-bg);
-  color: var(--color-text-inverse);
-}
-
-footer a {
-  color: var(--color-text-inverse);
-}
-
-footer a:hover,
-footer a:focus-visible {
-  text-decoration: underline;
-  text-decoration-thickness: from-font;
-}
-
-footer .footer > div {
-  max-width: var(--content-max-width);
-  margin: 0 auto;
-  padding: 2rem 1rem;
-}
-
-/* ============================================================================
-   UTILITY — Status / Error
-   ============================================================================ */
-
-.error {
-  color: var(--color-error);
-}
-
-/* ============================================================================
-   ACCESSIBILITY
-   ============================================================================ */
-
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border: 0;
-}
-
-/* Skip nav */
-a.skip-nav {
-  font-family: var(--font-family-body);
-  font-weight: var(--font-weight-semibold);
-  position: absolute;
-  left: 8px;
-  top: 8px;
-  max-width: 250px;
-  z-index: 1000;
-  padding: 0.5rem 1rem;
-  background: var(--color-primary);
-  color: var(--color-text-inverse);
-  transform: translateY(-200%);
-  transition: transform 0.2s;
-}
-
-a.skip-nav:focus {
-  transform: translateY(0);
 }
