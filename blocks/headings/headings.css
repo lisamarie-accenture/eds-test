@@ -1,0 +1,49 @@
+/*
+ * Headings Block — BCBSIL EDS
+ * H1/H2 + eyebrow stack + accent underline
+ */
+
+.headings h1,
+.headings h2,
+.headings h3,
+.headings h4,
+.headings h5,
+.headings h6 {
+  color: var(--heading-color);
+  font-family: var(--font-family-body);
+}
+
+/* Eyebrow above heading */
+.headings .eyebrow,
+.headings p.eyebrow {
+  font-family: var(--font-family-body);
+  font-weight: var(--font-weight-semibold);
+  font-size: 0.875rem;
+  color: var(--color-deep-navy);
+  text-transform: none; /* Sentence case — brand-profile rule */
+  margin: 0 0 var(--space-xs);
+  letter-spacing: normal;
+}
+
+/* Accent underline variant */
+.headings.accent-underline h1,
+.headings.accent-underline h2,
+.headings.accent-underline h3 {
+  padding-bottom: var(--space-s);
+  border-bottom: 3px solid var(--color-primary);
+  display: inline-block;
+}
+
+/* Dark section override */
+.section.dark .headings h1,
+.section.dark .headings h2,
+.section.dark .headings h3,
+.section.dark .headings h4,
+.section.dark .headings h5,
+.section.dark .headings h6 {
+  color: var(--color-text-inverse);
+}
+
+.section.dark .headings .eyebrow {
+  color: var(--color-text-inverse);
+}
