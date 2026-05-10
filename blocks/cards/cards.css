@@ -1,27 +1,101 @@
+/*
+ * Cards Block — Demo EDS
+ * Editorial card, three-up grid, horizontal layout.
+ * Motif: "Editorial card row" from brand-profile.json
+ * Card radius: 8px (--radius-card) — pill is reserved for CTAs.
+ */
+
+.cards {
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+  padding: 0 var(--space-s);
+}
+
 .cards > ul {
   list-style: none;
   margin: 0;
   padding: 0;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(257px, 1fr));
-  gap: 24px;
+  grid-template-columns: 1fr;
+  gap: var(--space-m);
+}
+
+@media (min-width: 768px) {
+  .cards > ul {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .cards > ul {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
 .cards > ul > li {
-  border: 1px solid #dadada;
-  background-color: var(--background-color);
+  background-color: var(--color-background);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transition: box-shadow 0.2s ease;
 }
 
-.cards .cards-card-body {
-  margin: 16px;
+.cards > ul > li:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
 }
 
+/* Card image */
 .cards .cards-card-image {
-  line-height: 0;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
 }
 
-.cards > ul > li img {
+.cards .cards-card-image img {
   width: 100%;
-  aspect-ratio: 4 / 3;
+  height: 100%;
   object-fit: cover;
+}
+
+/* Card body */
+.cards .cards-card-body {
+  padding: var(--space-m);
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.cards .cards-card-body h3,
+.cards .cards-card-body h4 {
+  font-family: var(--font-family-body);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-deep-navy);
+  margin: 0 0 var(--space-xs);
+}
+
+.cards .cards-card-body p {
+  color: var(--color-text);
+  font-size: 1rem;
+  line-height: var(--body-line-height);
+  margin: 0 0 var(--space-s);
+}
+
+/* Card link — tertiary style per brand-profile */
+.cards .cards-card-body a {
+  color: var(--color-primary);
+  font-weight: var(--font-weight-semibold);
+  text-decoration: none;
+  margin-top: auto;
+}
+
+.cards .cards-card-body a:hover {
+  color: var(--color-primary-hover);
+  text-decoration: underline;
+  text-decoration-thickness: from-font;
+}
+
+/* Grey section override — cards get white bg */
+.section.grey .cards > ul > li {
+  background-color: var(--color-background);
 }
