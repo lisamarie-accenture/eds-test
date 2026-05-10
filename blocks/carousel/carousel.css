@@ -1,0 +1,90 @@
+/*
+ * Carousel Block — BCBSIL EDS
+ * Standard, multi-slide, hero variant, dark variant.
+ * JS not bundled in prototype layer — renders statically.
+ */
+
+.carousel {
+  max-width: var(--content-max-width);
+  margin: 0 auto var(--space-l);
+  position: relative;
+  overflow: hidden;
+}
+
+.carousel .carousel-slides {
+  display: flex;
+  transition: transform 0.3s ease;
+}
+
+.carousel .carousel-slide {
+  min-width: 100%;
+  flex-shrink: 0;
+}
+
+.carousel .carousel-slide img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: var(--radius-card);
+}
+
+/* Navigation buttons */
+.carousel .carousel-nav-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  background-color: var(--color-background);
+  border: 1px solid var(--color-border);
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-primary);
+  font-size: 1.25rem;
+  transition: background-color 0.2s;
+}
+
+.carousel .carousel-nav-button:hover {
+  background-color: var(--color-cold-compress);
+}
+
+.carousel .carousel-nav-button.prev {
+  left: var(--space-s);
+}
+
+.carousel .carousel-nav-button.next {
+  right: var(--space-s);
+}
+
+/* Pagination dots */
+.carousel .carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-xs);
+  padding: var(--space-s) 0;
+}
+
+.carousel .carousel-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--color-border);
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.carousel .carousel-dot.active {
+  background-color: var(--color-primary);
+}
+
+/* Dark section override */
+.section.dark .carousel .carousel-nav-button {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.3);
+  color: var(--color-text-inverse);
+}
