@@ -1,0 +1,80 @@
+/*
+ * Breadcrumbs Block — BCBSIL EDS
+ * Slash separator, chevron on mobile, compact, dark variant.
+ */
+
+.breadcrumbs {
+  max-width: var(--content-max-width);
+  margin: var(--space-m) auto;
+  padding: 0 var(--space-s);
+}
+
+.breadcrumbs nav {
+  display: flex;
+  align-items: center;
+}
+
+.breadcrumbs ol,
+.breadcrumbs ul {
+  list-style: none;
+  display: inline-flex;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 0;
+  gap: 0;
+}
+
+.breadcrumbs li {
+  font-size: 0.875rem;
+  font-weight: var(--font-weight-regular);
+  color: var(--color-text);
+  display: none; /* Mobile: hide all but last two */
+}
+
+.breadcrumbs li:nth-last-child(2),
+.breadcrumbs li:last-child {
+  display: inline-flex;
+  align-items: center;
+}
+
+@media (min-width: 768px) {
+  .breadcrumbs li {
+    display: inline-flex;
+    align-items: center;
+  }
+}
+
+/* Separator — chevron on mobile, slash on desktop */
+.breadcrumbs li:not(:first-child)::before {
+  content: '‹';
+  color: var(--color-primary);
+  font-size: 0.875rem;
+  padding: 0 var(--space-xs);
+}
+
+@media (min-width: 768px) {
+  .breadcrumbs li:not(:first-child)::before {
+    content: '›';
+  }
+}
+
+.breadcrumbs li a {
+  color: var(--color-link);
+  text-decoration: none;
+  font-size: 0.875rem;
+}
+
+.breadcrumbs li a:hover {
+  text-decoration: underline;
+  text-decoration-thickness: from-font;
+}
+
+/* Active / current page */
+.breadcrumbs li:last-child {
+  font-weight: var(--font-weight-bold);
+}
+
+.breadcrumbs li:last-child a {
+  color: var(--color-text);
+  pointer-events: none;
+}
