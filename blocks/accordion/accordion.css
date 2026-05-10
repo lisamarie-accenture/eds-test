@@ -1,0 +1,87 @@
+/*
+ * Accordion Block — BCBSIL EDS
+ * Bordered, plus/minus toggle, flush, filled, dark variant.
+ */
+
+.accordion {
+  max-width: var(--content-max-width);
+  margin: 0 auto var(--space-l);
+}
+
+.accordion details {
+  border-bottom: 1px solid var(--color-border);
+  transition: background-color 300ms;
+}
+
+.accordion details:last-child {
+  border-bottom: 1px solid var(--color-border);
+}
+
+.accordion details summary {
+  font-family: var(--font-family-body);
+  font-weight: var(--font-weight-bold);
+  font-size: 1.125rem;
+  color: var(--color-text);
+  cursor: pointer;
+  padding: var(--space-s) var(--space-xl) var(--space-s) var(--space-m);
+  list-style: none;
+  position: relative;
+  transition: background-color 200ms;
+}
+
+.accordion details summary::-webkit-details-marker {
+  display: none;
+}
+
+/* Chevron indicator */
+.accordion details summary::after {
+  content: '';
+  position: absolute;
+  right: var(--space-s);
+  top: 50%;
+  width: 10px;
+  height: 10px;
+  border-right: 2px solid var(--color-text);
+  border-bottom: 2px solid var(--color-text);
+  transform: translateY(-70%) rotate(45deg);
+  transition: transform 300ms;
+}
+
+.accordion details[open] summary::after {
+  transform: translateY(-30%) rotate(-135deg);
+}
+
+.accordion details summary:hover {
+  background-color: #f2f2f1;
+}
+
+/* Content panel */
+.accordion details > div {
+  padding: 0 var(--space-m) var(--space-m);
+  background-color: var(--color-background);
+}
+
+.accordion details[open] {
+  background-color: var(--color-background);
+}
+
+/* Dark section override */
+.section.dark .accordion details {
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.section.dark .accordion details summary {
+  color: var(--color-text-inverse);
+}
+
+.section.dark .accordion details summary::after {
+  border-color: var(--color-text-inverse);
+}
+
+.section.dark .accordion details summary:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.section.dark .accordion details > div {
+  background-color: transparent;
+}
