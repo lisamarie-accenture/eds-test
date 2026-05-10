@@ -1,0 +1,62 @@
+/*
+ * Icons Block — BCBSIL EDS
+ * Standard, three-up, horizontal, dark grid.
+ */
+
+.icons {
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+  padding: 0 var(--space-s);
+}
+
+.icons > div {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-l);
+}
+
+@media (min-width: 768px) {
+  .icons > div {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.icons .icon-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--space-s);
+}
+
+/* Horizontal layout variant */
+.icons.horizontal .icon-item {
+  flex-direction: row;
+  text-align: left;
+  align-items: flex-start;
+}
+
+.icons .icon-item img,
+.icons .icon-item svg {
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+}
+
+.icons .icon-item h3,
+.icons .icon-item h4 {
+  color: var(--color-deep-navy);
+  margin: 0 0 var(--space-xs);
+}
+
+.icons .icon-item p {
+  color: var(--color-text);
+  margin: 0;
+}
+
+/* Dark section override */
+.section.dark .icons .icon-item h3,
+.section.dark .icons .icon-item h4,
+.section.dark .icons .icon-item p {
+  color: var(--color-text-inverse);
+}
