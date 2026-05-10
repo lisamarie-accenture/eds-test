@@ -1,0 +1,71 @@
+/*
+ * Text Block — BCBSIL EDS
+ * Rich body, blockquote, lead paragraph, plain disclosure.
+ */
+
+.text {
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+}
+
+.text p {
+  font-family: var(--font-family-body);
+  font-weight: var(--font-weight-regular);
+  font-size: 1rem;
+  line-height: var(--body-line-height);
+  color: var(--color-text);
+  margin: 0 0 var(--space-s);
+}
+
+.text p:last-child {
+  margin-bottom: 0;
+}
+
+/* Lead / intro paragraph */
+.text p.lead,
+.text .lead p {
+  font-size: 1.125rem;
+  line-height: 1.6;
+}
+
+/* Inline blockquote */
+.text blockquote {
+  border-left: 4px solid var(--color-primary);
+  padding: var(--space-s) var(--space-m);
+  margin: var(--space-m) 0;
+  color: var(--color-text);
+  font-style: italic;
+}
+
+/* Disclosure / fine print variant */
+.text.disclosure p {
+  font-size: 0.75rem;
+  color: var(--color-subdued);
+  line-height: 1.4;
+}
+
+/* Links inside text */
+.text a {
+  color: var(--color-link);
+  text-decoration: none;
+}
+
+.text a:hover {
+  color: var(--color-link-hover);
+  text-decoration: underline;
+  text-decoration-thickness: from-font;
+}
+
+/* Dark section override */
+.section.dark .text p {
+  color: var(--color-text-inverse);
+}
+
+.section.dark .text a {
+  color: var(--color-link-inverse);
+}
+
+.section.dark .text blockquote {
+  border-color: var(--color-primary);
+  color: var(--color-text-inverse);
+}
